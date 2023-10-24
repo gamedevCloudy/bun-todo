@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,26 +8,27 @@
     <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
     <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-
+    <link rel="stylesheet" href="styles.css">
     <title>Bun ToDO</title>
 </head>
 <body>
     <header class="container">
         <hgroup>
-            <h1>BUN HTMX DEMO</h1>
-            <h2>Badal Kumar</h2>
+            <h1>Simple Doer</h1>
+            <h2><a href="https://aayushakacloudy.is-a.dev" target=_blank>baadal</a></h2>
         </hgroup>
     </header>
 
     <main class="container">
         <form hx-post="/todos" hx-target="#todos" hx-ext="json-enc" _="on submit target.reset()">
-            <label for="todo">Bun Todo</label>
+            <label for="todo">Add a task</label>
             <input id="todo" name="todo" type="text" aria-label="Create Bun Todo" placeholder="New Bun todo">
-            <button type="submit">Create Bun</button>
+            <button type="submit">Create Task</button>
         </form>
+        <button class="secondary" hx-post="/clear" hx-target="#todos" type="submit">Clear</button>
+        <section id="todos" hx-get="/todos" hx-trigger="load"></section>
     </main>
 
-    <section id="todos" hx-get="/todos" hx-trigger="load"></section>
 
 </body>
 </html>
